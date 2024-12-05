@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Analysis</title>
+</head>
+<body>
+    <header>
+        <h1>Text Analysis</h1>
+    </header>
+
+    <main>
+        <!-- Formulario para analizar texto -->
+        <form id="analysis-form" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="text">Enter text or upload a .txt file:</label><br>
+            <textarea name="text" id="text" rows="5" cols="50"></textarea><br>
+            <label for="file">Upload a .txt file:</label>
+            <input type="file" id="file" name="file" accept=".txt"><br><br>
+            <button type="submit">Analyze</button>
+        </form>
+        
+        <div id="result"></div>
+        
+        <script>
+            const form = document.getElementById('analysis-form');
+            const resultDiv = document.getElementById('result');
+        
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault();
+        
+                const formData = new FormData(form);
+                const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        
+                const response = await fetch('/analysis/perspective/', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRFToken': csrfToken,
+                    },
+                });
+        
+                if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.innerHTML = `
+                        <p><strong>Insult Score:</strong> ${(data.insult * 100).toFixed(2)}%</p>
+                        <p><strong>Toxicity Score:</strong> ${(data.toxicity * 100).toFixed(2)}%</p>
+                        <p><strong>Threat Score:</strong> ${(data.threat * 100).toFixed(2)}%</p>
+                        <p><strong>Severe Toxicity Score:</strong> ${(data.severe_toxicity * 100).toFixed(2)}%</p>
+                    `;
+                } else {
+                    resultDiv.textContent = 'Error analyzing the text.';
+                }
+            });
+        </script>
+        
+</body>
+</html>

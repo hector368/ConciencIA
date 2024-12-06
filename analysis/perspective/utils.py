@@ -7,7 +7,7 @@ def analyze_text(text):
     headers = {"Content-Type": "application/json"}
     data = {
         "comment": {"text": text},
-        "languages": ["en"],  # Cambia esto si necesitas soporte para otros idiomas
+        "languages": ["es"],  # Cambia esto si necesitas soporte para otros idiomas
         "requestedAttributes": {"TOXICITY": {}, "SEVERE_TOXICITY": {}, "INSULT": {}, "THREAT": {}},
     }
     params = {"key": settings.PERSPECTIVE_API_KEY}

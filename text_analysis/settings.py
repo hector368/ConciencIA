@@ -34,6 +34,7 @@ print(PERSPECTIVE_API_KEY)  # Esto imprimirá la clave para verificar que funcio
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'analysis',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -51,6 +52,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -82,6 +84,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'text_analysis.wsgi.application'
+
+CORS_ALLOW_ALL_ORIGINS = True  # Para permitir todas las solicitudes
 
 
 # Database

@@ -48,3 +48,45 @@ def perspective_views(request):
             return JsonResponse({'error': 'Failed to analyze text', 'details': str(e)}, status=500)
 
     return JsonResponse({'error': 'Invalid request method'}, status=405)
+
+@csrf_exempt
+def analyze_text_view(request):
+    if request.method == "POST":
+        try:
+            # Obtener el texto enviado desde el cliente
+            data = json.loads(request.body)
+            text = data.get("text", "")
+
+            # Validar que el texto no esté vacío
+            if not text:
+                return JsonResponse({"status": "error", "message": "No text provided"}, status=400)
+
+            # Llamar a la función utilitaria para analizar el texto
+            analysis_result = analyze_text(text)
+
+            # Validar si la API de Perspective respondió correctamente
+            if "error" in analysis_result:
+                return JsonResponse(
+                    {"status": "error", "message": analysis_result["error"], "details": analysis_result.get("details")},
+                    status=500
+                )
+
+            # Extraer los puntajes relevantes
+            scores = analysis_result.get("attributeScores", {})
+            response_data = {
+                "status": "success",
+                "insult": scores.get("INSULT", {}).get("summaryScore", {}).get("value", 0),
+                "toxicity": scores.get("TOXICITY", {}).get("summaryScore", {}).get("value", 0),
+                "threat": scores.get("THREAT", {}).get("summaryScore", {}).get("value", 0),
+                "severe_toxicity": scores.get("SEVERE_TOXICITY", {}).get("summaryScore", {}).get("value", 0),
+                "received_text": text,
+            }
+
+            return JsonResponse(response_data)
+        except json.JSONDecodeError:
+            return JsonResponse({"status": "error", "message": "Invalid JSON format"}, status=400)
+        except Exception as e:
+            return JsonResponse({"status": "error", "message": "Unexpected error", "details": str(e)}, status=500)
+
+    return JsonResponse({"status": "error", "message": "Invalid request method"}, status=405)
+

@@ -12,16 +12,16 @@ document.addEventListener('DOMContentLoaded', () => {
       mensajeDiv.innerHTML = `
         <p><strong>Mensaje:</strong> ${texto}</p>
         <div class="nivel">
-          <span>Insultos:</span> <span class="value">${insult}</span>
+          <span>Insultos:</span> <span class="value">${Math.round(insult*100)}%</span>
         </div>
         <div class="nivel">
-          <span>Toxicidad:</span> <span class="value">${toxicity}</span>
+          <span>Toxicidad:</span> <span class="value">${Math.round(toxicity*100)}%</span>
         </div>
         <div class="nivel">
-          <span>Amenaza:</span> <span class="value">${threat}</span>
+          <span>Amenaza:</span> <span class="value">${Math.round(threat*100)}%</span>
         </div>
         <div class="nivel">
-          <span>Toxicidad Severa:</span> <span class="value">${severe_toxicity}</span>
+          <span>Toxicidad Severa:</span> <span class="value">${Math.round(severe_toxicity*100)}%</span>
         </div>
       `;
       resultadosDiv.appendChild(mensajeDiv);

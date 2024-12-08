@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  h1 {
+    font-size: 20px;
+    text-align: center;
+    color: #555;
+  }
+  .mensaje {
+    margin-top: 10px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .mensaje p {
+    margin: 5px 0;
+  }
+  .mensaje strong {
+    color: #333;
+  }
+  .nivel {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  .nivel span {
+    font-weight: bold;
+    color: #555;
+  }
+  .nivel span.value {
+    color: #007BFF;
+  }

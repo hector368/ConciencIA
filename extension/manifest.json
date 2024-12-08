@@ -4,6 +4,7 @@
   "version": "1.0",
   "description": "Envía texto a un servidor Django para análisis con la API de Perspective.",
   "permissions": [
+    "notifications",
     "activeTab",
     "storage"
   ],
@@ -26,9 +27,7 @@
         "content.js"
       ]
     }
-  ],
-  "host_permissions": [
-    "http://*/*",
-    "https://*/*"
   ]
 }
+
+

@@ -1,38 +1,88 @@
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
-  }
-  h1 {
-    font-size: 20px;
-    text-align: center;
-    color: #555;
-  }
-  .mensaje {
-    margin-top: 10px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  .mensaje p {
-    margin: 5px 0;
-  }
-  .mensaje strong {
-    color: #333;
-  }
-  .nivel {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-  }
-  .nivel span {
-    font-weight: bold;
-    color: #555;
-  }
-  .nivel span.value {
-    color: #007BFF;
-  }
+  font-family: "Roboto", Arial, sans-serif;
+  margin: 20px;
+  padding: 0;
+  background-color: #fce4ec; /* Rosa pastel */
+  color: #4a148c; /* Morado oscuro */
+}
+
+h1 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ad1457; /* Morado rosado */
+}
+
+#resultados {
+  background-color: #f8bbd0; /* Rosa claro */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+#resultados p {
+  font-size: 16px;
+  text-align: center;
+  color: #6a1b9a; /* Morado medio */
+}
+
+.mensaje {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 12px;
+  background: #f3e5f5; /* Morado pastel claro */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.mensaje:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mensaje p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.mensaje strong {
+  color: #4a148c; /* Morado oscuro */
+}
+
+.nivel {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #e1bee7; /* Borde rosa claro */
+}
+
+.nivel span {
+  font-weight: bold;
+  font-size: 14px;
+  color: #880e4f; /* Rosa oscuro */
+}
+
+.nivel span.value {
+  color: #d81b60; /* Rosa vibrante */
+}
+
+/* Estilo para botones (si es necesario agregar) */
+button {
+  display: block;
+  margin: 20px auto;
+  background-color: #ec407a; /* Rosa fuerte */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #d81b60; /* Rosa vibrante más oscuro */
+}

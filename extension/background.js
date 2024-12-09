@@ -57,17 +57,34 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 
-function send_notification(high_level,resultados) {
-          // Formatear el mensaje para la notificación
-          const notificacionMensaje = `Se ha detectado un mensaje ${high_level}: ${resultados.texto}`;
+function send_notification(high_level, resultados) {
+  // Formatear el mensaje para la notificación
+  const notificacionMensaje = `Se ha detectado un mensaje ${high_level}: ${resultados.texto}`;
 
-        // Mostrar la notificación
-        const notificationsApi = chrome.notifications || browser.notifications; // Compatibilidad Chrome/Firefox
-        notificationsApi.create({
-          type: 'basic',
-          iconUrl: 'icon.png', // Asegúrate de tener este ícono
-          title: '¿Necesitas ayuda?',
-          message: notificacionMensaje,
-        });
-  
+  // Generar una ID única para la notificación
+  const notificationId = `notificacion_${Date.now()}`;
+
+  // Mostrar la notificación
+  const notificationsApi = chrome.notifications || browser.notifications; // Compatibilidad Chrome/Firefox
+  notificationsApi.create(notificationId, {
+      type: 'basic',
+      iconUrl: 'icon.png', // Asegúrate de tener este ícono
+      title: '¿Necesitas ayuda?',
+      message: notificacionMensaje,
+  });
+
+  // Escuchar clics en la notificación
+  notificationsApi.onClicked.addListener((id) => {
+      if (id === notificationId) {
+          console.log("Se pulso la notificacion");
+          // Redirigir al sitio web con el mensaje como atributo
+          const mensaje = encodeURIComponent(resultados.texto); // Asegúrate de codificar el texto
+          const url = `http://127.0.0.1:8000/chatbot?mensaje=He recibido el siguiente mensaje:${mensaje}`;
+          // Usar chrome.tabs.create o browser.tabs.create para abrir una nueva pestaña
+          const tabsApi = chrome.tabs || browser.tabs;
+          tabsApi.create({ url: url }, (tab) => {
+              console.log("Nueva pestaña abierta:", tab);
+          });
+      }
+  });
 }

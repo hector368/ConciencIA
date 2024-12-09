@@ -1,0 +1,63 @@
+/* Tipografía */
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #7B1FA2 !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    width: 80px;
+    height: auto;
+    margin-right: 30px;
+}
+
+/* Hero Section */
+.hero-section {
+    height: 80vh;
+    background: 
+        linear-gradient(135deg, rgba(142, 36, 170, 0.8), rgba(106, 27, 154, 0.8)), 
+        url('../images/imagen1.png') center/contain no-repeat;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+}
+
+/* Cards */
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: #E1BEE7;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    background-color: #7B1FA2;
+    color: white;
+}

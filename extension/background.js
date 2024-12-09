@@ -30,23 +30,24 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
 
         var high_level = "";
+        var level = 0.60 ;
 
-        if (resultados.insult > 0.70) {
+        if (resultados.insult > level) {
           high_level = "insultante";
           send_notification(high_level,resultados);
         }
         
-        if (resultados.toxicity > 0.70) {
+        if (resultados.toxicity > level) {
           high_level = "toxico";
           send_notification(high_level, resultados);
         }
         
-        if (resultados.threat > 0.70) {
+        if (resultados.threat > level) {
           high_level = "amenazante";
           send_notification(high_level, resultados);
         }
         
-        if (resultados.severe_toxicity > 0.70) {
+        if (resultados.severe_toxicity > level) {
           high_level = "severamente toxico";
           send_notification(high_level, resultados);
         }

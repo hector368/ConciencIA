@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 from analysis.perspective.perspective_view import perspective_views, analyze_text_view
 from analysis.login.login_view import login_views
-
+from analysis.chatbot.chatbot_view import chatbot_view
 
 
 urlpatterns = [
@@ -27,4 +27,5 @@ urlpatterns = [
     path('login/', login_views, name='login'),
     path('analysis/perspective/', perspective_views, name='perspective'),
     path('api/analyze/', analyze_text_view, name='analyze_text'),
+    path('chatbot/', chatbot_view, name='chatbot'),
 ]

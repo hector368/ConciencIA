@@ -4,6 +4,7 @@
   "version": "1.0",
   "description": "Envía texto a un servidor Django para análisis con la API de Perspective.",
   "permissions": [
+    "tabs",
     "notifications",
     "activeTab",
     "storage"

@@ -38,6 +38,29 @@
             color: #6a1b9a; /* Morado medio */
         }
 
+        /* Mensajes */
+        .messages {
+            text-align: left;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #d1c4e9;
+            border-radius: 5px;
+            background-color: #ede7f6;
+        }
+
+        .messages p {
+            margin: 5px 0;
+        }
+
+        .messages .user-message {
+            color: #4a148c; /* Morado oscuro */
+            font-weight: bold;
+        }
+
+        .messages .bot-message {
+            color: #6a1b9a; /* Morado medio */
+        }
+
         /* Área de texto */
         textarea {
             width: 100%;
@@ -66,17 +89,6 @@
             background-color: #4a148c; /* Morado más oscuro al pasar el cursor */
         }
 
-        /* Respuesta */
-        #respuesta {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #ede7f6; /* Fondo morado claro */
-            border-radius: 5px;
-            font-size: 16px;
-            color: #4a148c; /* Texto morado oscuro */
-            min-height: 50px;
-        }
-
         /* Footer */
         footer {
             margin-top: 30px;
@@ -97,6 +109,17 @@
 <body>
     <div class="chatbot-container">
         <h1 class="chatbot-title">Chatbot - Equidad de Género y Toxicidad</h1>
+
+        <!-- Mostrar los mensajes iniciales -->
+        <div class="messages">
+            <p class="bot-message"><strong>Chatbot:</strong> Hola, estoy aquí para ayudarte.</p>
+            {% if mensaje_inicial and respuesta_inicial %}
+                <p class="user-message"><strong>Tú:</strong> {{ mensaje_inicial }}</p>
+                <p class="bot-message"><strong>Chatbot:</strong> {{ respuesta_inicial }}</p>
+            {% endif %}
+        </div>
+
+        <!-- Formulario para enviar nuevos mensajes -->
         <textarea id="mensaje" placeholder="Escribe tu mensaje aquí..."></textarea>
         <button onclick="enviarMensaje()">Enviar</button>
         <div id="respuesta"></div>
@@ -105,53 +128,52 @@
         <p>Creado con <span style="color: #7b1fa2;">❤️</span> para fomentar la equidad de género.</p>
     </footer>
     <script>
-function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        async function enviarMensaje() {
+            const mensaje = document.getElementById('mensaje').value;
+            if (!mensaje.trim()) {
+                alert("Por favor, escribe un mensaje.");
+                return;
+            }
+
+            const csrftoken = getCookie('csrftoken');
+            try {
+                const response = await fetch('/chatbot_request/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'X-CSRFToken': csrftoken,
+                    },
+                    body: new URLSearchParams({ mensaje }),
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error('Error en la respuesta:', errorText);
+                    alert('Ocurrió un error al procesar tu solicitud.');
+                    return;
+                }
+
+                const data = await response.json();
+                document.getElementById('respuesta').innerText = data.respuesta || data.error;
+            } catch (error) {
+                console.error('Error en la solicitud:', error);
+                alert('Ocurrió un error al procesar tu solicitud.');
             }
         }
-    }
-    return cookieValue;
-}
-async function enviarMensaje() {
-    const mensaje = document.getElementById('mensaje').value;
-    if (!mensaje.trim()) {
-        alert("Por favor, escribe un mensaje.");
-        return;
-    }
-
-    const csrftoken = getCookie('csrftoken');
-    try {
-        const response = await fetch('/chatbot/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'X-CSRFToken': csrftoken,
-            },
-            body: new URLSearchParams({ mensaje }),
-        });
-
-        if (!response.ok) {
-            const errorText = await response.text();
-            console.error('Error en la respuesta:', errorText);
-            alert('Ocurrió un error al procesar tu solicitud.');
-            return;
-        }
-
-        const data = await response.json();
-        document.getElementById('respuesta').innerText = data.respuesta || data.error;
-    } catch (error) {
-        console.error('Error en la solicitud:', error);
-        alert('Ocurrió un error al procesar tu solicitud.');
-    }
-}
-
     </script>
 </body>
 </html>

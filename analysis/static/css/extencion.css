@@ -1,0 +1,263 @@
+/* Estilos generales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f3e5f5; /* Lila claro */
+    color: #4a148c; /* Morado oscuro */
+    padding: 2rem;
+    line-height: 1.6;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    color: #7b1fa2; /* Morado medio */
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+header p {
+    font-size: 1.2rem;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+section {
+    background: #ffffff;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+section:hover {
+    transform: translateY(-5px);
+}
+
+section h2 {
+    color: #6a1b9a;
+    margin-bottom: 0.8rem;
+    font-size: 1.8rem;
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 2rem;
+    color: #4a148c;
+}
+
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #4a148c;
+}
+
+footer p {
+    font-weight: bold;
+}
+
+.modal {
+    display: none; /* Ocultar el modal por defecto */
+    position: fixed;
+    z-index: 1; /* Asegurarse de que el modal esté sobre otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+}
+
+/* Contenedor del contenido del modal */
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo para el encabezado del modal */
+.modal-header {
+    background-color: #6a1b9a; /* Color morado fuerte */
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px; /* Redondear todas las esquinas */
+    margin-bottom: 3px;
+}
+
+
+/* Estilo para el cuerpo del modal */
+.modal-body {
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 20px; /* Espaciado dentro del contenedor */
+    border: 2px solid #7b1fa2; /* Borde morado */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para un efecto de profundidad */
+    margin-bottom: 20px; /* Espaciado debajo del cuerpo del modal */
+    font-family: 'Roboto', sans-serif; /* Tipografía elegante */
+    color: #333; /* Color del texto */
+}
+
+/* Opcional: Si quieres hacer que los elementos de la lista también tengan un estilo más suave */
+.modal-body ul {
+    padding-left: 20px; /* Indentación para los elementos de la lista */
+}
+
+.modal-body li {
+    margin-bottom: 10px; /* Espaciado entre los elementos de la lista */
+}
+
+
+/* Estilos para el checkbox de aceptación */
+.checkbox-container {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-container input {
+    margin-right: 10px;
+}
+
+/* Estilo para el botón de aceptar */
+#accept-btn {
+    background-color: #6a1b9a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+#accept-btn:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+/* Estilos para el botón de cerrar */
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+h2 {
+    font-size: 1.6rem;
+    color: #6a1b9a;
+    margin-bottom: 1rem;
+}
+
+ul {
+    margin-left: 1.5rem;
+    list-style-type: square;
+    color: #4a148c;
+    margin-bottom: 1.5rem;
+}
+
+button {
+    background-color: #7b1fa2;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s, transform 0.2s ease;
+    width: 100%;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+button:enabled {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+button:hover {
+    background-color: #6a1b9a;
+    transform: scale(1.05);
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-top: 1.2rem;
+    font-size: 1.1rem;
+    color: #4a148c;
+}
+
+.checkbox-container input {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.checkbox-container label {
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    color: #4a148c;
+}
+
+/* Fondo oscuro */
+footer p {
+    font-weight: bold;
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 600px) {
+    .modal-content {
+        width: 90%;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+}
+
+/* Estilo para el título del modal */
+.Titulo-modal {
+    color: white; /* Color blanco */
+    font-family: 'Poppins', sans-serif; /* Tipografía bonita, puedes elegir otra si prefieres */
+    font-size: 24px; /* Tamaño de la fuente */
+    font-weight: bold; /* Negrita */
+    text-align: center; /* Centrado del texto */
+    letter-spacing: 1px; /* Espaciado entre letras */
+    padding: 15px 0; /* Espaciado alrededor del texto */
+}

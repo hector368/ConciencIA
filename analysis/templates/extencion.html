@@ -1,0 +1,72 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extensión de Detección de Toxicidad</title>
+    <link rel="stylesheet" href="{% static 'css/extencion.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <!-- Modal para las políticas de privacidad -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2 class="Titulo-modal">Políticas de Privacidad</h2>
+            </div>
+            <div class="modal-body">
+                <p>En cumplimiento con las normativas vigentes y en respeto a tu privacidad, te presentamos nuestras Políticas de Privacidad. Para utilizar esta extensión, es imprescindible que leas y aceptes los siguientes términos:</p>
+                <ul>
+                    <li>La información que generas mediante el uso de esta extensión se procesa de manera confidencial y solo a nivel local, sin que se envíe a servidores externos.</li>
+                    <li>Los datos procesados no se almacenan en ningún servidor ni se comparten con terceros. El único fin de su tratamiento es el análisis y procesamiento de los mensajes enviados.</li>
+                    <li>En caso de detectar mensajes que puedan contener contenido tóxico, se enviarán notificaciones para alertarte, con el fin de mejorar la seguridad y calidad de tu experiencia.</li>
+                </ul>
+                <p>Al hacer clic en el botón "Aceptar", confirmas que has leído, comprendido y aceptas los términos establecidos en estas políticas. Si no estás de acuerdo, te recomendamos no continuar con el uso de la extensión.</p>
+    
+                <!-- Checkbox para aceptar políticas -->
+                <div class="checkbox-container">
+                    <input type="checkbox" id="accept-checkbox">
+                    <label for="accept-checkbox">Acepto las políticas de privacidad</label>
+                </div>
+                
+                <button id="accept-btn" disabled>Aceptar</button>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <h1>💜 Extensión de Detección de Toxicidad</h1>
+        <p>Analiza mensajes y fomenta una comunicación en línea más segura.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>🚀 ¿Cómo Funciona?</h2>
+            <p>La extensión utiliza la API de Perspective y un servidor Django para analizar los mensajes que envías. Si detecta contenido tóxico, recibirás una notificación.</p>
+        </section>
+
+        <section>
+            <h2>🔍 Características</h2>
+            <ul>
+                <li>Detección de insultos, amenazas y contenido tóxico.</li>
+                <li>Notificaciones automáticas en tiempo real.</li>
+                <li>Redirección a una página de ayuda personalizada.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>🔒 Privacidad</h2>
+            <p>Los textos analizados no se almacenan ni se comparten. La extensión solo procesa información local y en tu servidor de desarrollo.</p>
+        </section>
+
+        <footer>
+            <p>Desarrollado con 💜 para crear un entorno digital más seguro.</p>
+        </footer>
+    </main>
+
+    <script src="{% static 'js/modal.js' %}"></script>
+</body>
+</html>

@@ -1,179 +1,33 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot - Equidad de Género y Toxicidad</title>
-    <style>
-        /* Estilos generales */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f3fc; /* Fondo claro con tonos morados */
-            color: #4a148c; /* Texto principal en un morado oscuro */
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
-
-        /* Contenedor principal */
-        .chatbot-container {
-            background-color: #ffffff; /* Fondo blanco para contraste */
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            width: 90%;
-            max-width: 500px;
-            text-align: center;
-        }
-
-        /* Título */
-        .chatbot-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #6a1b9a; /* Morado medio */
-        }
-
-        /* Mensajes */
-        .messages {
-            text-align: left;
-            margin-bottom: 20px;
-            padding: 10px;
-            border: 1px solid #d1c4e9;
-            border-radius: 5px;
-            background-color: #ede7f6;
-        }
-
-        .messages p {
-            margin: 5px 0;
-        }
-
-        .messages .user-message {
-            color: #4a148c; /* Morado oscuro */
-            font-weight: bold;
-        }
-
-        .messages .bot-message {
-            color: #6a1b9a; /* Morado medio */
-        }
-
-        /* Área de texto */
-        textarea {
-            width: 100%;
-            height: 100px;
-            border: 1px solid #d1c4e9; /* Borde morado claro */
-            border-radius: 5px;
-            padding: 10px;
-            font-size: 16px;
-            resize: none;
-            margin-bottom: 15px;
-        }
-
-        /* Botón */
-        button {
-            background-color: #7b1fa2; /* Botón morado vibrante */
-            color: #ffffff; /* Texto blanco */
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #4a148c; /* Morado más oscuro al pasar el cursor */
-        }
-
-        /* Footer */
-        footer {
-            margin-top: 30px;
-            font-size: 14px;
-            color: #9e9e9e;
-        }
-
-        footer a {
-            color: #7b1fa2;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <title>Chatbot - ConciencIA</title>
+    <link rel="stylesheet" href="{% static 'css/chatbot.css' %}">
 </head>
 <body>
     <div class="chatbot-container">
-        <h1 class="chatbot-title">Chatbot - Equidad de Género y Toxicidad</h1>
+        <h1 class="chatbot-title">ConciencIA - Chatbot Ayuda</h1>
 
-        <!-- Mostrar los mensajes iniciales -->
-        <div class="messages">
-            <p class="bot-message"><strong>Chatbot:</strong> Hola, estoy aquí para ayudarte.</p>
-            {% if mensaje_inicial and respuesta_inicial %}
-                <p class="user-message"><strong>Tú:</strong> {{ mensaje_inicial }}</p>
-                <p class="bot-message"><strong>Chatbot:</strong> {{ respuesta_inicial }}</p>
-            {% endif %}
+        <!-- Contenedor de mensajes -->
+        <div class="messages" id="messages">
+            <div class="bot-message">
+                <strong>ConciencIA:</strong> Hola, estoy aquí para ayudarte.
+            </div>
         </div>
 
         <!-- Formulario para enviar nuevos mensajes -->
         <textarea id="mensaje" placeholder="Escribe tu mensaje aquí..."></textarea>
         <button onclick="enviarMensaje()">Enviar</button>
-        <div id="respuesta"></div>
     </div>
+
     <footer>
         <p>Creado con <span style="color: #7b1fa2;">❤️</span> para fomentar la equidad de género.</p>
     </footer>
-    <script>
-        function getCookie(name) {
-            let cookieValue = null;
-            if (document.cookie && document.cookie !== '') {
-                const cookies = document.cookie.split(';');
-                for (let i = 0; i < cookies.length; i++) {
-                    const cookie = cookies[i].trim();
-                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        break;
-                    }
-                }
-            }
-            return cookieValue;
-        }
-        async function enviarMensaje() {
-            const mensaje = document.getElementById('mensaje').value;
-            if (!mensaje.trim()) {
-                alert("Por favor, escribe un mensaje.");
-                return;
-            }
 
-            const csrftoken = getCookie('csrftoken');
-            try {
-                const response = await fetch('/chatbot_request/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'X-CSRFToken': csrftoken,
-                    },
-                    body: new URLSearchParams({ mensaje }),
-                });
-
-                if (!response.ok) {
-                    const errorText = await response.text();
-                    console.error('Error en la respuesta:', errorText);
-                    alert('Ocurrió un error al procesar tu solicitud.');
-                    return;
-                }
-
-                const data = await response.json();
-                document.getElementById('respuesta').innerText = data.respuesta || data.error;
-            } catch (error) {
-                console.error('Error en la solicitud:', error);
-                alert('Ocurrió un error al procesar tu solicitud.');
-            }
-        }
-    </script>
+<!-- Cargar archivo JS -->
+<script src="{% static 'js/chatbot.js' %}"></script>
 </body>
 </html>

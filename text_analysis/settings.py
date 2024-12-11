@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 from .config import PERSPECTIVE_API_KEY
 
@@ -26,7 +26,13 @@ SECRET_KEY = 'django-insecure-fjen@2_b@^y2jbn-(9qzp02ra)fz-$h5ilz3934$^p3kfh6^w=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+
+ALLOWED_HOSTS = [
+    'conciencia.onrender.com',
+    'localhost',
+    '127.0.0.1',
+]
+
 
 # Uso de la clave API
 print(PERSPECTIVE_API_KEY)  # Esto imprimirá la clave para verificar que funciona
@@ -43,12 +49,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',  # Requerido por allauth
-
-    # Apps de Allauth
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -60,7 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware',  # Agregado aquí
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Agrega aquí
 ]
 
 ROOT_URLCONF = 'text_analysis.urls'
@@ -86,6 +86,12 @@ TEMPLATES = [
 WSGI_APPLICATION = 'text_analysis.wsgi.application'
 
 CORS_ALLOW_ALL_ORIGINS = True  # Para permitir todas las solicitudes
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://conciencia.onrender.com',
+]
+
+CSRF_COOKIE_DOMAIN = '.onrender.com'
 
 
 # Database
@@ -134,6 +140,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -144,7 +151,6 @@ MAX_UPLOAD_SIZE = 1048576  # 1 MB en bytes
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',  # Autenticación normal
-    'allauth.account.auth_backends.AuthenticationBackend',  # Autenticación social
 ]
 
 SITE_ID = 1  # Necesario para django-allauth
@@ -152,13 +158,6 @@ SITE_ID = 1  # Necesario para django-allauth
 LOGIN_REDIRECT_URL = '/'  # Redirigir después del inicio de sesión
 LOGOUT_REDIRECT_URL = '/'  # Redirigir después del cierre de sesión
 
-ACCOUNT_LOGOUT_ON_GET = True  # Cierra sesión inmediatamente cuando se accede a /accounts/logout/
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'SCOPE': ['profile', 'email'],
-        'AUTH_PARAMS': {'access_type': 'online'},
-    }
-}
 
 SOCIALACCOUNT_GOOGLE_CLIENT_ID = '75648015386-o30as3f8u1uil6mj3do0b06k2lbc3ako.apps.googleusercontent.com'
 SOCIALACCOUNT_GOOGLE_CLIENT_SECRET = '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'

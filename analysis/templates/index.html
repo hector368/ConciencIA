@@ -10,7 +10,7 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary px-4">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-purple">
         <a class="navbar-brand d-flex align-items-center" href="#">
             <img src="{% static 'images/h.gif' %}" alt="Logo" class="img-fluid logo">
             ConciencIA
@@ -24,82 +24,132 @@
                     <a class="nav-link" href="#que-puede-hacer">¿Qué puede hacer ConciencIA?</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#nueva-imagen">¡Descubre más!</a>
+                    <a class="nav-link" href="#nueva-imagen">Chatbot ConciencIA</a>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <main class="hero-section text-light text-center d-flex align-items-center justify-content-center">
-        <div class="hero-content">
-            <h1 class="display-4 fw-bold">¡Bienvenidas a ConciencIA!</h1>
-            <p class="lead">Un espacio seguro que analiza mensajes de WhatsApp para protegerte ante cualquier amenaza o toxicidad.</p>
-            <a class="btn btn-lg btn-light fw-bold" style="pointer-events: none; cursor: default;">Conocenos</a>
-        </div>
-    </main>
+ <!-- Hero Section -->
+ <main class="hero-section text-light text-center d-flex align-items-center justify-content-center">
+    <div class="hero-content">
+        <h1 class="display-4 fw-bold">¡Bienvenidas a ConciencIA!</h1>
+        <p class="lead">Un espacio seguro que analiza mensajes de WhatsApp para protegerte ante cualquier amenaza o toxicidad.</p>
+        <!-- Botón que redirige a la vista 'extencion' -->
+        <a class="btn btn-lg btn-light fw-bold" href="{% url 'extencion' %}">Conócenos</a>
+    </div>
+</main>
+
     
 
-        <!-- Sección: ¿Qué puede hacer ConciencIA por ti? -->
-        <section id="que-puede-hacer" class="py-5 text-light" style="background-color: #7B1FA2;">
-            <div class="container text-center">
-                <h2 class="fw-bold mb-4">¿Qué puede hacer ConciencIA por ti?</h2>
-                <p class="mb-5" style="text-align: justify;">ConciencIA es tu aliada en la lucha contra la violencia digital. Analizamos mensajes de WhatsApp para protegerte y ayudarte a identificar comportamientos dañinos. Queremos que te sientas segura en todos tus espacios digitales.</p>
-                <div class="row">
-                    <div class="col-md-4 mb-4">
-                        <div class="card bg-lavender text-dark h-100">
-                            <div class="card-body">
-                                <h5 class="card-title fw-bold">Análisis de Mensajes</h5>
-                                <p class="card-text" style="text-align: justify;">Detecta y analiza mensajes para identificar amenazas o toxicidad, brindándote las herramientas necesarias para responder de manera segura.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card bg-lavender text-dark h-100">
-                            <div class="card-body">
-                                <h5 class="card-title fw-bold">Educación y Autocuidado</h5>
-                                <p class="card-text" style="text-align: justify;">Proporciona recursos educativos sobre cómo mantener un entorno digital seguro y prevenir situaciones de riesgo.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card bg-lavender text-dark h-100">
-                            <div class="card-body">
-                                <h5 class="card-title fw-bold">Prevención de Riesgos</h5>
-                                <p class="card-text" style="text-align: justify;">ConciencIA genera alertas tempranas y consejos personalizados para actuar frente a posibles amenazas en tus redes digitales.</p>
-                            </div>
-                        </div>
+<!-- Sección: ¿Qué puede hacer ConciencIA por ti? -->
+<section id="que-puede-hacer" class="py-5 text-light">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-4">¿Qué puede hacer ConciencIA por ti?</h2>
+        <p class="mb-5">ConciencIA es tu aliada en la lucha contra la violencia digital. Analizamos mensajes de WhatsApp para protegerte y ayudarte a identificar comportamientos dañinos. Queremos que te sientas segura en todos tus espacios digitales.</p>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card bg-lavender text-dark h-100">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">
+                            <i class="bi bi-chat-text-fill"></i> Análisis de Mensajes
+                        </h5>
+                        <p class="card-text">Detecta y analiza mensajes para identificar amenazas o toxicidad, brindándote las herramientas necesarias para responder de manera segura.</p>
                     </div>
                 </div>
             </div>
-        </section>
+            <div class="col-md-4 mb-4">
+                <div class="card bg-lavender text-dark h-100">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Educación y Autocuidado</h5>
+                        <p class="card-text">Proporciona recursos educativos sobre cómo mantener un entorno digital seguro y prevenir situaciones de riesgo.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card bg-lavender text-dark h-100">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Prevención de Riesgos</h5>
+                        <p class="card-text">Genera alertas tempranas y consejos personalizados para actuar frente a posibles amenazas en tus redes digitales.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center m-4 rounded-4">
+        <img src="{% static 'images/stop.gif' %}" alt="Imagen Especial" class="img-fluid rounded shadow-lg" style="max-width: 80%;">
+    </div>
+</section>
 
-    <!-- Nueva Imagen -->
-    <section id="nueva-imagen" class="py-5 bg-light text-dark text-center">
-        <div class="container">
-            <h2 class="mb-4">¡Alto a la Violencia!</h2>
-            <img src="{% static 'images/violencia.jpg' %}" alt="Imagen Especial" class="img-fluid rounded shadow">
-        </div>
-    </section>
-    <!-- Sección: ¡Alto a la Violencia! -->
-    <section id="info-violencia" class="py-5 bg-light text-dark">
-        <div class="container text-center">
-            <p class="mb-5" style="text-align: justify;">Sabemos que la violencia digital puede ser difícil de detectar. Aquí en ConciencIA, nos aseguramos de proporcionarte herramientas que empoderan tu seguridad y bienestar.</p>
-            <div class="row">
-                <div class="col-md-6">
-                    <!-- Se ajusta el tamaño del gif -->
-                    <img src="{% static 'images/stop.gif'%}" alt="Ilustración contra la violencia" class="img-fluid rounded shadow" style="max-width: 50%; height: auto;">
-                </div>
-                <div class="col-md-6 d-flex flex-column justify-content-center">
-                    <p class="lead" style="text-align: justify;">Denunciar es el primer paso para frenar la violencia. Consulta nuestros recursos educativos y sé parte del cambio.</p>
+<!-- Nueva Imagen -->
+<section id="nueva-imagen" class="py-5 text-light" style="background: linear-gradient(135deg, #77389e, #9575CD);">
+    <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
+            <!-- Contenedor de Texto -->
+            <div class="col-md-8">
+                <h2 class="fw-bold mb-3 display-4">¡Habla con el Chatbot de ConciencIA!</h2>
+                <p class="lead mb-4" style="line-height: 1.8;">
+                    Nuestro chatbot está aquí para ayudarte a tratar temas relacionados con la violencia digital. Recibe orientación y apoyo personalizado para protegerte de situaciones de riesgo en línea.
+                </p>
+                <div>
+                    <a href="{% url 'chatbot' %}" class="btn btn-light fw-bold shadow-sm px-5 py-3" style="border-radius: 25px;">Comienza ahora</a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+    <div class="d-flex justify-content-center m-4 rounded-4">
+        <img src="{% static 'images/violencia.jpg' %}" alt="Imagen Especial" class="img-fluid rounded shadow-lg" style="max-width: 80%;">
+    </div>
+    <div class="row justify-content-center">
+        <div class="container-ayuda rounded-4 p-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">¿Cómo podemos ayudarte?</h2>
+                <p class="lead">
+                    En ConciencIA, utilizamos tecnología avanzada para ayudarte a identificar y enfrentar la toxicidad digital. Nuestro chatbot está diseñado para ofrecerte apoyo inmediato y detectar señales de violencia en línea.
+                </p>
+            </div>
+            <div class="row gy-4 justify-content-center">
+                <div class="col-lg-4 col-md-6">
+                    <div class="shadow-custom  rounded-4 p-5 text-center h-100">
+                        <h5 class="fw-bold mb-3">Detección de Toxicidad</h5>
+                        <p>Nuestro chatbot analiza conversaciones para identificar posibles amenazas, acoso o comportamientos tóxicos en tus mensajes.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="shadow-custom  rounded-4 p-5 text-center h-100">
+                        <h5 class="fw-bold mb-3">Orientación y Consejos</h5>
+                        <p>Recibe orientación personalizada para gestionar situaciones de toxicidad digital y proteger tu bienestar en línea.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="shadow-custom  rounded-4 p-5 text-center h-100" style="background-color: var(--violeta-medio);">
+                        <h5 class="fw-bold mb-3" style="color: var(--violeta-oscuro);">Intervención Inmediata</h5>
+                        <p>Nuestro chatbot ofrece respuestas rápidas y apoyo inmediato cuando detecta situaciones de acoso o violencia en tus conversaciones.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</section>
+
+
+
+
     <!-- Footer -->
-    <footer class="text-center py-4 bg-purple text-light">
-        <p>&copy; 2024 ConciencIA. Todos los derechos reservados.</p>
-    </footer>
-</body>
+<!-- Footer -->
+<footer class="text-center py-4 bg-purple text-light">
+    <p>&copy; 2024 ConciencIA. Todos los derechos reservados.</p>
+    <div class="contactos-footer">
+        <h4 class="fw-bold mb-3">Contactos de Ayuda</h4>
+        <ul class="list-unstyled text-light">
+            <li><strong>Línea Nacional contra la Violencia</strong>: 01 800 123 4567</li>
+            <li><strong>Centro de Apoyo a Mujeres</strong>: 01 800 789 1011</li>
+            <li><strong>Emergencias</strong>: 911</li>
+        </ul>
+    </div>
+</footer>
+
 </html>
 

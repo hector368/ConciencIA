@@ -1,1 +1,1 @@
-web: gunicorn ConciencIA.wsgi --log-file -
+web: gunicorn text_analysis.wsgi --log-file -

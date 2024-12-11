@@ -3,7 +3,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     const texto = message.text;
 
     // URL del servidor Django
-    const apiUrl = "http://127.0.0.1:8000/api/analyze/";
+    const apiUrl = "https://conciencia.onrender.com/api/analyze/";
 
     // Enviar el texto al servidor Django
     fetch(apiUrl, {
@@ -80,7 +80,7 @@ function send_notification(high_level, resultados) {
           console.log("Se pulso la notificacion");
           // Redirigir al sitio web con el mensaje como atributo
           const mensaje = encodeURIComponent(resultados.texto); // Asegúrate de codificar el texto
-          const url = `http://127.0.0.1:8000/chatbot?mensaje=He recibido el siguiente mensaje:${mensaje}`;
+          const url = `https://conciencia.onrender.com/chatbot?mensaje=He recibido el siguiente mensaje:${mensaje}`;
           // Usar chrome.tabs.create o browser.tabs.create para abrir una nueva pestaña
           const tabsApi = chrome.tabs || browser.tabs;
           tabsApi.create({ url: url }, (tab) => {

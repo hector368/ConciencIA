@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   chrome.storage.local.get('resultados', data => {
     const resultadosDiv = document.getElementById('resultados');
-    resultadosDiv.innerHTML = ""; // Limpiar cualquier contenido previo
+    resultadosDiv.textContent = ""; // Limpiar cualquier contenido previo
 
     if (data.resultados) {
       const { texto, insult, toxicity, threat, severe_toxicity } = data.resultados;
@@ -9,24 +9,44 @@ document.addEventListener('DOMContentLoaded', () => {
       // Crear el contenedor para mostrar los resultados
       const mensajeDiv = document.createElement('div');
       mensajeDiv.classList.add('mensaje');
-      mensajeDiv.innerHTML = `
-        <p><strong>Mensaje:</strong> ${texto}</p>
-        <div class="nivel">
-          <span>Insultos:</span> <span class="value">${Math.round(insult*100)}%</span>
-        </div>
-        <div class="nivel">
-          <span>Toxicidad:</span> <span class="value">${Math.round(toxicity*100)}%</span>
-        </div>
-        <div class="nivel">
-          <span>Amenaza:</span> <span class="value">${Math.round(threat*100)}%</span>
-        </div>
-        <div class="nivel">
-          <span>Toxicidad Severa:</span> <span class="value">${Math.round(severe_toxicity*100)}%</span>
-        </div>
-      `;
+
+      // Crear el elemento para mostrar el texto del mensaje
+      const mensajeP = document.createElement('p');
+      const mensajeStrong = document.createElement('strong');
+      mensajeStrong.textContent = "Mensaje: ";
+      mensajeP.appendChild(mensajeStrong);
+      mensajeP.appendChild(document.createTextNode(texto));
+      mensajeDiv.appendChild(mensajeP);
+
+      // Crear y añadir niveles dinámicamente
+      const niveles = [
+        { label: "Insultos", value: insult },
+        { label: "Toxicidad", value: toxicity },
+        { label: "Amenaza", value: threat },
+        { label: "Toxicidad Severa", value: severe_toxicity }
+      ];
+
+      niveles.forEach(nivel => {
+        const nivelDiv = document.createElement('div');
+        nivelDiv.classList.add('nivel');
+
+        const labelSpan = document.createElement('span');
+        labelSpan.textContent = `${nivel.label}:`;
+
+        const valueSpan = document.createElement('span');
+        valueSpan.classList.add('value');
+        valueSpan.textContent = `${Math.round(nivel.value * 100)}%`;
+
+        nivelDiv.appendChild(labelSpan);
+        nivelDiv.appendChild(valueSpan);
+        mensajeDiv.appendChild(nivelDiv);
+      });
+
       resultadosDiv.appendChild(mensajeDiv);
     } else {
-      resultadosDiv.innerHTML = "<p>No hay resultados disponibles aún.</p>";
+      const noResultadosP = document.createElement('p');
+      noResultadosP.textContent = "No hay resultados disponibles aún.";
+      resultadosDiv.appendChild(noResultadosP);
     }
   });
 });

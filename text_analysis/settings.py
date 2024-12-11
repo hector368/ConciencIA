@@ -43,12 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',  # Requerido por allauth
-
-    # Apps de Allauth
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -60,7 +54,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware',  # Agregado aquí
 ]
 
 ROOT_URLCONF = 'text_analysis.urls'
@@ -144,7 +137,6 @@ MAX_UPLOAD_SIZE = 1048576  # 1 MB en bytes
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',  # Autenticación normal
-    'allauth.account.auth_backends.AuthenticationBackend',  # Autenticación social
 ]
 
 SITE_ID = 1  # Necesario para django-allauth
@@ -152,13 +144,6 @@ SITE_ID = 1  # Necesario para django-allauth
 LOGIN_REDIRECT_URL = '/'  # Redirigir después del inicio de sesión
 LOGOUT_REDIRECT_URL = '/'  # Redirigir después del cierre de sesión
 
-ACCOUNT_LOGOUT_ON_GET = True  # Cierra sesión inmediatamente cuando se accede a /accounts/logout/
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'SCOPE': ['profile', 'email'],
-        'AUTH_PARAMS': {'access_type': 'online'},
-    }
-}
 
 SOCIALACCOUNT_GOOGLE_CLIENT_ID = '75648015386-o30as3f8u1uil6mj3do0b06k2lbc3ako.apps.googleusercontent.com'
 SOCIALACCOUNT_GOOGLE_CLIENT_SECRET = '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'

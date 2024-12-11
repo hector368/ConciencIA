@@ -1,0 +1,195 @@
+
+/* Tipografía */
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.navbar {
+    background: linear-gradient(135deg, #7B1FA2, #9C27B0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #E1BEE7 !important;
+}
+
+.logo {
+    width: 80px;
+    height: auto;
+    margin-right: 30px;
+}
+
+/* Hero Section */
+.hero-section {
+    height: 60vh;
+    background: 
+        linear-gradient(135deg, rgba(142, 36, 170, 0.8), rgba(106, 27, 154, 0.8)), 
+        url('/static/images/imagen1.png') center/cover no-repeat;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.hero-content h1 {
+    animation: fadeInDown 1s ease;
+}
+
+.hero-content a {
+    background-color: #E1BEE7;
+    color: #7B1FA2;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.hero-content a:hover {
+    background-color: #D1C4E9;
+    color: #4A148C;
+    transform: translateY(-2px);
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Cards */
+.card {
+    background: linear-gradient(135deg, #D1C4E9, #E1BEE7);
+    color: #4A148C;
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(94, 53, 177, 0.3);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.07);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-title {
+    font-weight: bold;
+    color: #6A1B9A;
+}
+
+.card-text {
+    color: #4A148C;
+}
+
+#que-puede-hacer {
+    background: linear-gradient(135deg, #7B1FA2, #9C27B0);
+    color: white;
+}
+
+#que-puede-hacer h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.card-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Nueva Imagen */
+#nueva-imagen h2 {
+    font-size: 2.5rem;
+}
+
+#nueva-imagen .btn {
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+#nueva-imagen .btn:hover {
+    background-color: #6A1B9A;
+    color: #FFFFFF;
+}
+
+/* Centrado y mejora de borde */
+.container-ayuda {
+    max-width: 1200px; /* Limitar el tamaño máximo */
+    margin: 0 auto; /* Centrado horizontal */
+    border: #000000; /* Borde blanco y más grueso */
+    border-radius: 20px; /* Bordes redondeados */
+    padding: 30px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; /* Sombra general */
+}
+
+/* Tarjetas con borde grueso y sombra */
+.shadow-custom {
+    border: #000000; /* Borde blanco más grueso */
+    border-radius: 15px; /* Bordes redondeados */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+.shadow-custom:hover {
+    transform: translateY(-10px); /* Eleva la tarjeta */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Sombra más intensa en hover */
+    border: 3px solid var(--violeta-claro); /* Resaltar borde en hover */
+}
+
+/* Fondo violeta para la tarjeta en hover */
+.shadow-custom:hover {
+    background-color: var(--violeta-claro); /* Fondo más claro cuando se hace hover */
+}
+
+/* Efecto de color en el título al hacer hover */
+.shadow-custom h5 {
+    transition: color 0.3s ease;
+}
+
+.shadow-custom:hover h5 {
+    color: var(--violeta-oscuro); /* Cambio de color del título en hover */
+}
+
+
+
+
+footer{
+    background: linear-gradient(135deg, #7B1FA2, #9C27B0);
+}
+
+footer .contactos-footer {
+    margin-top: 20px;
+}
+
+footer .contactos-footer h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+footer .contactos-footer ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+footer .contactos-footer li {
+    font-size: 1rem;
+    margin-bottom: 8px;
+}

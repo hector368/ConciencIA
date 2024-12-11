@@ -1,0 +1,1 @@
+web: gunicorn ConciencIA.wsgi --log-file -

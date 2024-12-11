@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 from .config import PERSPECTIVE_API_KEY
 
@@ -26,7 +26,13 @@ SECRET_KEY = 'django-insecure-fjen@2_b@^y2jbn-(9qzp02ra)fz-$h5ilz3934$^p3kfh6^w=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+
+ALLOWED_HOSTS = [
+    'conciencia.onrender.com',
+    'localhost',
+    '127.0.0.1',
+]
+
 
 # Uso de la clave API
 print(PERSPECTIVE_API_KEY)  # Esto imprimirá la clave para verificar que funciona
@@ -54,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Agrega aquí
 ]
 
 ROOT_URLCONF = 'text_analysis.urls'
@@ -79,6 +86,12 @@ TEMPLATES = [
 WSGI_APPLICATION = 'text_analysis.wsgi.application'
 
 CORS_ALLOW_ALL_ORIGINS = True  # Para permitir todas las solicitudes
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://conciencia.onrender.com',
+]
+
+CSRF_COOKIE_DOMAIN = '.onrender.com'
 
 
 # Database
@@ -127,6 +140,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

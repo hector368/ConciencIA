@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "Texto a Perspective",
-  "version": "1.0",
-  "description": "Envía texto a un servidor Django para análisis con la API de Perspective.",
+  "name": "ConciencIA",
+  "version": "1.1",
+  "description": "Envia tus mensajes a nuestro servidor para detectar si estas sufriendo algun tipo de violencia",
   "permissions": [
     "tabs",
     "notifications",

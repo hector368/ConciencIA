@@ -26,7 +26,13 @@ SECRET_KEY = 'django-insecure-fjen@2_b@^y2jbn-(9qzp02ra)fz-$h5ilz3934$^p3kfh6^w=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+
+ALLOWED_HOSTS = [
+    'conciencia.onrender.com',
+    'localhost',
+    '127.0.0.1',
+]
+
 
 # Uso de la clave API
 print(PERSPECTIVE_API_KEY)  # Esto imprimirá la clave para verificar que funciona
@@ -80,6 +86,12 @@ TEMPLATES = [
 WSGI_APPLICATION = 'text_analysis.wsgi.application'
 
 CORS_ALLOW_ALL_ORIGINS = True  # Para permitir todas las solicitudes
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://conciencia.onrender.com',
+]
+
+CSRF_COOKIE_DOMAIN = '.onrender.com'
 
 
 # Database

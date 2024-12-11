@@ -93,6 +93,9 @@ CSRF_TRUSTED_ORIGINS = [
 
 CSRF_COOKIE_DOMAIN = '.onrender.com'
 
+CSRF_COOKIE_SECURE = True  # Para asegurarse de que la cookie CSRF se envíe solo a través de HTTPS
+SESSION_COOKIE_SECURE = True  # Para garantizar que las cookies de sesión solo se envíen a través de HTTPS
+
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
